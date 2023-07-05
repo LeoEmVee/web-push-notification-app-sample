@@ -1,3 +1,5 @@
+import {environment} from './environments.js';
+
 // Check if service workers are supported
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/worker.js', {
@@ -5,7 +7,7 @@ if ('serviceWorker' in navigator) {
     });
 };
 
-const publicVapidKey = 'To be defined later';
+const publicVapidKey = environment.publicVapidKey;
 
 // Copied from the web-push documentation
 const urlBase64ToUint8Array = (base64String) => {
@@ -25,7 +27,7 @@ window.subscribe = async () => {
     // Subscribe to push notifications
     const subscription = await registration.pushManager.subscribe({
         userVisibleOnly: true,
-        applicationServerKey: urlBase64ToUint8Array(publicVapidKey),
+        applicationServerKey: urlBase64ToUint8Array(publicVapidKey)
     });
 
     await fetch('/subscription', {

@@ -4,6 +4,6 @@ node_modules
 dist
 #Environment
 .env
-environments.ts
+environments.js
 #Package-lock
 package-lock.json
