@@ -3,6 +3,7 @@ import path from 'path';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import database from './config/database';
+import initializeRoutes from './routes';
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ app.use(express.static(path.join(__dirname, '../frontend')));
 app.use(bodyParser.json());
 // Database connection
 database();
+initializeRoutes(app);
 
 // Start the Express server
 app.listen(port, () => {
