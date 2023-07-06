@@ -8,10 +8,11 @@ const uri = process.env.WPNAPPSAMPLE_DB_URI;
 export default async () => {
     // Connect to DB
     try {
-        await mongoose.connect(uri, <ConnectOptions>{
+        await mongoose.connect(uri/*, <ConnectOptions>{
+            // This parameters are not necessary anymore in Mongoose newer version. I left them here for the sake of tutorial's competion
             useNewUrlParser: true,
             useUnifiedTopology: true
-        });
+        }*/);
     } catch (err) {
         console.error(`Couldn't connect to database: ${err}`);
         process.exit(1);
