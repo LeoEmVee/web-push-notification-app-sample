@@ -70,4 +70,13 @@ window.unsubscribe = async () => {
     };
 };
 
+window.broadcast = async () => {
+    await fetch('/broadcast', {
+        method: 'GET',
+        headers: {
+            'content-type': 'application/json'
+        }
+    });
+};
+
 setSubscribeMessage();
