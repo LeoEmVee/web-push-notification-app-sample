@@ -5,7 +5,7 @@ Small web app for subscribing to and sending a web push notification, built foll
 # To run locally
 
 - You will need a publicVapidKey and a privateVapidKey. Check the tutorial to see how to generate them.
-- I saved them in an environments.js file at the frontend and in the .env file at the backend, along with the vapidEmail the API port and my MongoDB connection URI. You will need to provide all of them as well.
+- I saved them in an environments.js file at the frontend and in the .env file at the backend, along with the vapidEmail, the API port and my MongoDB connection URI. You will need to provide all of them as well.
 
 Then:
 
