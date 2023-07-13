@@ -73,6 +73,7 @@ window.unsubscribe = async () => {
 window.broadcast = async () => {
     await fetch('/broadcast', {
         method: 'GET',
+        cache: 'default',
         headers: {
             'content-type': 'application/json'
         }
