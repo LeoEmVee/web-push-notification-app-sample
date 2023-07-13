@@ -7,15 +7,24 @@
     "clean": "rimraf dist",
     "mkdir": "mkdirp dist/frontend",
     "copy": "cpy frontend/* dist/frontend",
-    "prebuild": "npm run clean && npm run mkdir && npm run copy",
     "build": "tsc",
-    "prestart": "npm run build",
-    "start": "node .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon"
   },
-  "keywords": [],
+  "keywords": [ ],
   "author": "",
   "license": "ISC",
+  "nodemonConfig": {
+    "ignore": [
+      ".git",
+      "node_modules"
+    ],
+    "watch": [
+      "./backend",
+      "./frontend"
+    ],
+    "exec": "npm run clean && npm run mkdir && npm run copy && npm run build && node .",
+    "ext": "js ts"
+  },
   "dependencies": {
     "@types/mongoose": "^5.11.97",
     "@types/web-push": "^3.3.2",
@@ -29,6 +38,7 @@
     "@types/express": "^4.17.17",
     "cpy-cli": "^5.0.0",
     "mkdirp": "^3.0.1",
+    "nodemon": "^3.0.1",
     "rimraf": "^5.0.1"
   }
 }
