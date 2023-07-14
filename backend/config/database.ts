@@ -13,6 +13,7 @@ export default async () => {
             useNewUrlParser: true,
             useUnifiedTopology: true
         }*/);
+        console.log('Connected to database.');
     } catch (err) {
         console.error(`Couldn't connect to database: ${err}`);
         process.exit(1);

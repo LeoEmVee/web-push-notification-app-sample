@@ -5,6 +5,7 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/worker.js', {
         scope: '/',
     });
+    console.log('Service worker registered');
 };
 
 const publicVapidKey = environment.publicVapidKey;
@@ -29,6 +30,7 @@ const setSubscribeMessage = async () => {
     const subscription = await registration.pushManager.getSubscription();
     getSubscribedElement().setAttribute('style', `display: ${subscription ? 'block' : 'none'};`);
     getUnsubscribedElement().setAttribute('style', `display: ${subscription ? 'none' : 'block'};`);
+    console.log('Subscription buttons updated.');
 };
 
 window.subscribe = async () => {
@@ -49,6 +51,7 @@ window.subscribe = async () => {
     });
 
     if (response.ok) {
+        console.log('Subscription successfully saved.');
         setSubscribeMessage();
     }
 };
@@ -67,17 +70,19 @@ window.unsubscribe = async () => {
     if (response.ok) {
         await subscription.unsubscribe();
         setSubscribeMessage();
+        console.log('Subscription successfully deleted.');
     };
 };
 
 window.broadcast = async () => {
     await fetch('/broadcast', {
         method: 'GET',
-        cache: 'default',
+        cache: 'no-cache',
         headers: {
             'content-type': 'application/json'
         }
     });
+    console.log('Push notification sent.');
 };
 
 setSubscribeMessage();

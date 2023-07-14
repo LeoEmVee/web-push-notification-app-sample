@@ -2,12 +2,14 @@ import Subscription, {ISubscription} from '../models/SubscriptionModel';
 import {Document} from 'mongoose';
 
 export const create = async (subscription: ISubscription): Promise<Document<ISubscription>> => {
+    console.log('Saving subscription...');
     const newSubscription = new Subscription(subscription);
     const savedSubscription = await newSubscription.save();
     return savedSubscription;
 };
 
 export const deleteByEndpoint = async (endpoint: string): Promise<boolean> => {
+    console.log('Removing subscription...');
     const url = new URL(endpoint);
     // Query encoding in order to match the way the endpoint property get's saved when the subscription is sent by MS Edge
     const encodedQuery = url.searchParams.toString()
@@ -23,6 +25,7 @@ export const deleteByEndpoint = async (endpoint: string): Promise<boolean> => {
 };
 
 export const getAll = async (): Promise<ISubscription[]> => {
+    console.log('Getting subscriptions to send push notification...');
     const subscriptions = await Subscription.find();
     return subscriptions;
 };

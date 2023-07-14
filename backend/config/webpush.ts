@@ -13,4 +13,5 @@ export default (): void => {
         publicVapidKey,
         privateVapidKey
     );
+    console.log('VAPID details setup done.');
 };

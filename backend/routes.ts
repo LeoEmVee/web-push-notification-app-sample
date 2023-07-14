@@ -8,6 +8,7 @@ const initializeRoutes = (app: Express): void => {
     app.get('/favicon.ico', (req, res) => {
         res.status(200).send('Aquí no hay favicon de ese');
     });
+    console.log('Routes initialized.');
 };
 
 export default initializeRoutes;
